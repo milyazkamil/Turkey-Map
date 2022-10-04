@@ -1,0 +1,339 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto";
+}
+
+img {
+    max-width: 100vw;
+    height: auto;
+}
+
+.wrapper {
+    width: calc(100% - 1px);
+    height: calc(100vh - 2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map_wrapper {
+   position: relative; 
+}
+
+.map_wrapper > svg {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.city {
+    fill: none;
+    stroke-width: 5px;
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.city:hover {
+    animation: highlightCity 1.5s linear infinite;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 5px;
+    background: white;
+    font-size: 24px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.cityPopupBackground {
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.549);
+    opacity: 0;
+    transition: 0.3 all;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.cityPopupBackground.active {
+    pointer-events: all;
+    opacity: 1;
+    transition: 0.3 all;
+}
+
+.cityPopup{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    width: 1000px;
+    overflow: auto;
+
+}
+
+.cityPhoto {
+    max-width: 500px;
+    max-height: 450px;
+    border-radius: 20px;
+}
+
+.spaceBetween {
+    display: flex;
+    justify-content: space-between;
+}
+
+.townPopupBackground {
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.549);
+    opacity: 0;
+    transition: 0.3 all;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.townPopupBackground.active {
+    pointer-events: all;
+    opacity: 1;
+    transition: 0.3 all;
+}
+
+.townPopup{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    width: 1000px;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.townPopulation {
+    margin-top: 5px;
+}
+
+.townPhoto {
+    max-width: 500px;
+    max-height: 500px;
+    border-radius: 20px;
+}
+
+.cityPopupBackground > .cityPopup > .cityInformation,
+.townPopupBackground > .townPopup > .townDiv > .townInformation {
+    font-size: 20px;
+    margin-bottom: 5px;
+    line-height: 25px;
+}
+
+.button {
+    margin: 5px;
+    font-size: 20px;
+    transition: 0.5s all;
+    border: 1px solid rgba(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+
+}
+
+.button:hover {
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 22px 70px 4px;
+}
+
+.townList {
+    display: grid;
+    grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
+}
+/*It ensures that the blue screen does not appear when the map is double-clicked.*/
+.turkeyMap {
+    user-select: none;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255) 20%, rgba(0, 0, 0, 0) 91%, rgba(0, 0, 0, 0) 100%);
+}
+.button-links {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.button-links > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 45px;
+    min-width: 70px;
+}
+
+.links > img {
+    max-width: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: 0.3s all;
+}
+
+.links > img:hover {
+    max-width: 35px;
+}
+
+@keyframes highlightCity {
+   0% {
+        stroke: black;
+   }
+   50% {
+        stroke: red;
+   }
+   100% {
+        stroke: black;
+   } 
+}
+
+@media all and (max-width: 1024px) {
+    .cityPopup {
+        width: 600px;
+        height: 500px;
+    }
+
+    .townPopup{
+        width: 600px;
+        height: 300px;
+    }
+
+    .townDiv {
+        margin: auto 0;
+    }
+
+    
+    .cityPhoto {
+        max-width: 450px;
+        max-height: 450px;
+    }
+
+    .spaceBetween {
+        display: block;
+    }
+    
+    .townList {
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+    }
+
+    .button {
+        font-size: 17px;
+    }
+
+    .footer > div {
+        font-size: 14px;
+    }
+
+    .footer > .button-links > div > a > img {
+        max-width: 25px;
+    }
+}
+
+@media all and (max-width: 700px) {
+    .cityPopup {
+        width: 500px;
+        height: 500px;
+    }
+
+    .townPopup{
+        width: 500px;
+        height: 300px;
+    }
+    
+    .cityPhoto {
+        max-width: 400px;
+        max-height: 450px;
+    }
+    
+    .townList {
+        display: grid;
+        grid-template-columns: 33.3% 33.3% 33.3%;
+    }
+}
+
+@media all and (max-width: 500px) {
+    .cityPopup {
+        width: 360px;
+        height: 500px;
+    }
+
+    .townPopup {
+        width: 360px;
+    }
+    
+    .cityPhoto {
+        max-width: 300px;
+        max-height: 450px;
+    }
+    
+    .townList {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+}
+
+@media all and (max-width: 400px) {
+    .cityPopup {
+        width: 300px;
+        height: 500px;
+    }
+
+    .townPopup {
+        width: 300px;
+    }
+    
+    .cityPhoto {
+        max-width: 250px;
+        max-height: 450px;
+    }
+    
+    .townList {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+
+    .footer > div {
+        font-size: 12px;
+    }
+
+    .footer > .button-links > div > a > img {
+        max-width: 22px;
+    }
+}
